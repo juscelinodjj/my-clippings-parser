@@ -1,0 +1,26 @@
+{
+  "name": "my-clippings-parser",
+  "version": "1.0.0",
+  "description": "Um parser simples para MyClippings.txt (Kindle)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juscelinodjj/my-clippings-parser.git"
+  },
+  "keywords": [
+    "kindle",
+    "my-clippings",
+    "kindle-clippings",
+    "kindle-highlights",
+    "kindle-parser",
+    "my-clippings-parser",
+    "js"
+  ],
+  "author": "juscelinodjj",
+  "license": "GPLv3",
+  "homepage": "https://github.com/juscelinodjj/my-clippings-parser#readme"
+}
