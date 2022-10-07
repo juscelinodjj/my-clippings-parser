@@ -1,34 +1,49 @@
-# Kindle Clippings to JSON
+# MyClippings Parser
+Um parser simples para MyClippings.txt (Kindle)
 
 ## Uso
-```bash
-node kc2json.js '/caminho-para/My Clippings.txt'
-```
 ```javascript
-kc2json('My Clippings');
+import parse from './index.js';
+
+// Retornando Object
+const myClippings = parse(fileContent);
+
+// Retornando JSON
+const myClippings = parse(fileContent, true);
 ```
-## Saída JSON
+
+## Saída (json)
 ```json
 {
-  "language": [],
-  "books": {
-    "book": {
-      "clippings": [
-        {
-          "type": "",
-          "text": "",
-          "page": "",
-          "location": "",
-          "date": ""
-        }
-      ]
+  "lang": [
+    "pt"
+  ],
+  "library": {
+    "[Nome do autor]": {
+      "[Título do livro]": {
+        "count": {
+          "[destaque]": 1,
+          "[nota]": 1,
+        },
+        "entries": [
+          {
+            "type": "[destaque]",
+            "content": "Lorem ipsum.",
+            "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
+          },
+          {
+            "type": "[nota]",
+            "content": "Lorem ipsum.",
+            "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
+          },
+        ]
+      }
     }
   }
 }
 ```
-> Caso a propriedade "type" seja bookmark (marcador), a propriedade "text" é omitida.
 
-## Idiomas suportados (My Clippings.txt)
+## Idiomas suportados
 - Alemão
 - Espanhol
 - Francês
@@ -37,4 +52,4 @@ kc2json('My Clippings');
 - Português
 
 ## Licença
-Distribuído sob a licença GPLv3. Ver [LICENSE](https://github.com/juscelinodjj/kc2json/blob/main/LICENSE) para maiores informações.
+Distribuído sob a licença [GPLv3](https://github.com/juscelinodjj/my-clippings-parser/blob/main/LICENSE).
