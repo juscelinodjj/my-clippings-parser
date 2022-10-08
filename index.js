@@ -19,10 +19,11 @@ export default function main(fileContent, inJson) {
       const content = entry.content;
       const title = parse.title(titleAndAuthor);
       const author = parse.author(titleAndAuthor);
+      const page = parse.page(entry.info, keywords);
       const date = parse.date(entry.info);
       const type = parse.type(entry.info, keywords);
       const currentObj = {
-        lang, titleAndAuthor, content, title, author, date, type
+        lang, titleAndAuthor, content, title, author, page, date, type
       };
       return merge(initialObj, currentObj);
     }, initialObj);

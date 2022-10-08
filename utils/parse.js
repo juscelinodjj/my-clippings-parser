@@ -5,6 +5,7 @@ export default (function main() {
     title,
     author,
     type,
+    page,
     date
   };
 })();
@@ -29,6 +30,15 @@ function type(input, keywords) {
   return keywords
     .find(keyword => input.toLowerCase().includes(keyword))
     || null;
+}
+
+function page(input, keywords) {
+  const pageInCurrentLang = keywords[4];
+  const rawRegex = pageInCurrentLang + '\\s(\\d+)\\s\\|';
+  const regex = new RegExp(rawRegex);
+  const match = input.match(regex);
+  const page = match ? match[1] : null;
+  return page;
 }
 
 function date(input) {

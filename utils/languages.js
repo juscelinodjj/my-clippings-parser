@@ -45,7 +45,9 @@ function list() {
       'bookmark': 'marcador',
       'highlight': 'destaque',
       'note': 'nota',
-      'date': 'adicionado'
+      'date': 'adicionado',
+      'page': 'página',
+      'position': 'posição'
     }
   };
 }
