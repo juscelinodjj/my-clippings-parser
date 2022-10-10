@@ -6,6 +6,7 @@ export default (function main() {
     author,
     type,
     page,
+    position,
     date
   };
 })();
@@ -39,6 +40,15 @@ function page(input, keywords) {
   const match = input.match(regex);
   const page = match ? match[1] : null;
   return page;
+}
+
+function position(input, keywords) {
+  const positionInCurrentLang = keywords[5];
+  const rawRegex = positionInCurrentLang + '\\s((?:\\d+)(?:-\\d+)?)';
+  const regex = new RegExp(rawRegex);
+  const match = input.match(regex);
+  const position = match ? match[1] : null;
+  return position;
 }
 
 function date(input) {

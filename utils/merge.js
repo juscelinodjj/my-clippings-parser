@@ -2,7 +2,7 @@
 
 export default function main(clippings, args) {
   const {
-    lang, titleAndAuthor, content, title, author, page, date, type
+    lang, titleAndAuthor, content, title, author, page, position, date, type
   } = args;
   clippings.lang = [...new Set([...clippings.lang, lang])];
   if (title && author) {
@@ -23,6 +23,6 @@ export default function main(clippings, args) {
     reference['count'][type] = 0;
   }
   reference['count'][type]++;
-  reference['entries'].push({type, content, page, date});
+  reference['entries'].push({type, content, page, position, date});
   return clippings;
 }
