@@ -15,31 +15,36 @@ function list() {
       'bookmark': 'lesezeichen',
       'highlight': 'markierung',
       'note': 'notiz',
-      'date': 'hinzugefügt'
+      'date': 'hinzugefügt',
+      'page': 'Seite'
     },
     'en': {
       'bookmark': 'bookmark',
       'highlight': 'highlight',
       'note': 'note',
-      'date': 'added'
+      'date': 'added',
+      'page': 'page'
     },
     'es': {
       'bookmark': 'marcador',
       'highlight': 'subrayado',
       'note': 'nota',
-      'date': 'añadido'
+      'date': 'añadido',
+      'page': 'página'
     },
     'fr': {
       'bookmark': 'signet',
       'highlight': 'surlignement',
       'note': 'note',
-      'date': 'ajouté'
+      'date': 'ajouté',
+      'page': 'page'
     },
     'it': {
       'bookmark': 'segnalibro',
       'highlight': 'evidenziazione',
       'note': 'nota',
-      'date': 'aggiunto'
+      'date': 'aggiunto',
+      'page': 'pagina'
     },
     'pt': {
       'bookmark': 'marcador',
