@@ -30,12 +30,14 @@ const myClippings = parse(fileContent, true);
             "type": "[destaque]",
             "content": "Lorem ipsum.",
             "page": "1",
+            "position": "1",
             "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
           },
           {
             "type": "[nota]",
             "content": "Lorem ipsum.",
             "page": "1",
+            "position": "1-1",
             "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
           },
         ]
