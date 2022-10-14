@@ -16,8 +16,8 @@ function list() {
       'highlight': 'markierung',
       'note': 'notiz',
       'date': 'hinzugefügt',
-      'page': 'Seite',
-      'position': 'Position'
+      'page': 'seite',
+      'position': 'position'
     },
     'en': {
       'bookmark': 'bookmark',
