@@ -1,59 +1,47 @@
 'use strict';
 
-export default (function main() {
+export default function main(target, keywords, input) {
+  const regex = patterns()[target](keywords);
+  const match = input.toLowerCase().match(regex);
+  const result = match ? match[1] : null;
+  return result;
+}
+
+function patterns() {
+  const regex = rawRegex => new RegExp(rawRegex);
   return {
-    title,
-    author,
-    type,
-    page,
-    position,
-    date
+    title() {
+      const rawRegex = '(.+)\\s\\(';
+      return regex(rawRegex);
+    },
+    author() {
+      const rawRegex = '(?![^\(]*\()([^\)]+)(?=\))';
+      return regex(rawRegex);
+    },
+    type(keywords) {
+      if (!keywords.length) {
+        return null;
+      }
+      const rawRegex = keywords.reduce((accumulator, keyword, index) => {
+        const isLast = keywords.length === (index + 1);
+        return isLast
+          ? (accumulator += keyword + ')') : (accumulator += keyword + '|');
+      }, '(');
+      return regex(rawRegex);
+    },
+    page(keywords) {
+      const pageInCurrentLang = keywords[4];
+      const rawRegex = pageInCurrentLang + '\\s(\\d+)\\s\\|';
+      return regex(rawRegex);
+    },
+    position(keywords) {
+      const positionInCurrentLang = keywords[5];
+      const rawRegex = positionInCurrentLang + '\\s((?:\\d+)(?:-\\d+)?)';
+      return regex(rawRegex);
+    },
+    date() {
+      const rawRegex = '(?:\|.+)?\|\s(.+\d)';
+      return regex(rawRegex);
+    }
   };
-})();
-
-function title(input) {
-  const regex = /(.+)\s\(/;
-  const match = input.match(regex);
-  const title = match ? match[1] : null;
-  return title;
-}
-
-function author(input) {
-  const regex = /\((.+?)\)/g;
-  const matches = input.matchAll(regex);
-  const arrayMatch = Array.from(matches);
-  const lastMatch = arrayMatch.slice(-1);
-  const author = arrayMatch.length ? lastMatch[0][1] : null;
-  return author;
-}
-
-function type(input, keywords) {
-  return keywords
-    .find(keyword => input.toLowerCase().includes(keyword))
-    || null;
-}
-
-function page(input, keywords) {
-  const pageInCurrentLang = keywords[4];
-  const rawRegex = pageInCurrentLang + '\\s(\\d+)\\s\\|';
-  const regex = new RegExp(rawRegex);
-  const match = input.match(regex);
-  const page = match ? match[1] : null;
-  return page;
-}
-
-function position(input, keywords) {
-  const positionInCurrentLang = keywords[5];
-  const rawRegex = positionInCurrentLang + '\\s((?:\\d+)(?:-\\d+)?)';
-  const regex = new RegExp(rawRegex);
-  const match = input.match(regex);
-  const position = match ? match[1] : null;
-  return position;
-}
-
-function date(input) {
-  const regex = /(?:\|.+)?\|\s(.+\d)/;
-  const match = input.match(regex);
-  const date = match ? match[1] : null;
-  return date;
-}
+};

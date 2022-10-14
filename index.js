@@ -17,12 +17,12 @@ export default function main(fileContent, inJson) {
       const keywords = languages.keywords(lang);
       const titleAndAuthor = entry.titleAndAuthor;
       const content = entry.content;
-      const title = parse.title(titleAndAuthor);
-      const author = parse.author(titleAndAuthor);
-      const page = parse.page(entry.info, keywords);
-      const position = parse.position(entry.info, keywords);
-      const date = parse.date(entry.info);
-      const type = parse.type(entry.info, keywords);
+      const title = parse('title', null, titleAndAuthor);
+      const author = parse('author', null, titleAndAuthor);
+      const page = parse('page', keywords, entry.info,);
+      const position = parse('position', keywords, entry.info,);
+      const date = parse('date', null, entry.info);
+      const type = parse('type', keywords, entry.info);
       const currentObj = {
         lang, titleAndAuthor, content, title, author, page, position, date, type
       };
