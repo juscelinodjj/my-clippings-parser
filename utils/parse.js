@@ -40,7 +40,7 @@ function patterns() {
       return regex(rawRegex);
     },
     date() {
-      const rawRegex = '(?:\|.+)?\|\s(.+\d)';
+      const rawRegex = '(?:\\|.+)?\\|\\s(.+\\d(?:\\s(?:am|pm))?)';
       return regex(rawRegex);
     }
   };
