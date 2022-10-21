@@ -2,13 +2,13 @@
 
 export default function main(target, keywords, input) {
   const regex = patterns()[target](keywords);
-  const match = input.toLowerCase().match(regex);
+  const match = input.match(regex);
   const result = match ? match[1] : null;
   return result;
 }
 
 function patterns() {
-  const regex = rawRegex => new RegExp(rawRegex);
+  const regex = rawRegex => new RegExp(rawRegex, 'i');
   return {
     title() {
       const rawRegex = '(.+)\\s\\(';
