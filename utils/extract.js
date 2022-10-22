@@ -1,12 +1,5 @@
 'use strict';
 
-export default function main(target, keywords, input) {
-  const regex = patterns()[target](keywords);
-  const match = input.match(regex);
-  const result = match ? match[1] : null;
-  return result;
-}
-
 function patterns() {
   const regex = rawRegex => new RegExp(rawRegex, 'i');
   return {
@@ -45,3 +38,12 @@ function patterns() {
     }
   };
 };
+
+function main(target, keywords, input) {
+  const regex = patterns()[target](keywords);
+  const match = input.match(regex);
+  const result = match ? match[1] : null;
+  return result;
+}
+
+export default main;

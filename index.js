@@ -6,7 +6,7 @@ import languages from './utils/languages.js';
 import extract from './utils/extract.js'
 import merge from './utils/merge.js'
 
-export default function main(fileContent, inJson) {
+function main(fileContent, inJson) {
   if (!test(fileContent)) {
     return new Error('SyntaxError');
   }
@@ -30,3 +30,5 @@ export default function main(fileContent, inJson) {
     }, initialObj);
   return !inJson ? clippings : JSON.stringify(clippings, null, 2);
 }
+
+export default main;

@@ -1,10 +1,5 @@
 'use strict';
 
-export default function main(input) {
-  const fns = [removeStrangerCharacters, entries];
-  return fns.reduce((result, fn) => fn(result), input);
-}
-
 function removeStrangerCharacters(input) {
   // [Carriage Return, Zero Width No-Break Space]
   const badCharCodes = [13, 65279];
@@ -25,3 +20,10 @@ function entries(input) {
   });
   return entries;
 };
+
+function main(input) {
+  const fns = [removeStrangerCharacters, entries];
+  return fns.reduce((result, fn) => fn(result), input);
+}
+
+export default main;

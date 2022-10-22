@@ -1,14 +1,5 @@
 'use strict';
 
-export default (function main() {
-  return {
-    list,
-    codes,
-    keywords,
-    identify
-  };
-})();
-
 function list() {
   return {
     'de': {
@@ -77,3 +68,14 @@ function identify(entry) {
     return info.includes(date);
   }) || null;
 }
+
+function main() {
+  return {
+    list,
+    codes,
+    keywords,
+    identify
+  };
+}
+
+export default main();

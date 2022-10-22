@@ -1,6 +1,6 @@
 'use strict';
 
-export default function main(clippings, args) {
+function main(clippings, args) {
   const {
     lang, titleAndAuthor, content, title, author, page, position, date, type
   } = args;
@@ -26,3 +26,5 @@ export default function main(clippings, args) {
   reference['entries'].push({type, content, page, position, date});
   return clippings;
 }
+
+export default main;
