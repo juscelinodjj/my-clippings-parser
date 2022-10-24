@@ -10,24 +10,22 @@ function main(fileContent, inJson) {
   if (!test(fileContent)) {
     return new Error('SyntaxError');
   }
-  const initialObj = {lang: [], library: {}};
-  const clippings = entries(fileContent)
-    .reduce((initialObj, entry) => {
-      const lang = languages.identify(entry);
+  const rawClippings = entries(fileContent);
+  const clippings = rawClippings
+    .reduce((clippings, rawClipping) => {
+      const lang = languages.identify(rawClipping);
       const keywords = languages.keywords(lang);
-      const titleAndAuthor = entry.titleAndAuthor;
-      const content = entry.content;
+      const titleAndAuthor = rawClipping.titleAndAuthor;
+      const content = rawClipping.content;
       const title = extract('title', null, titleAndAuthor);
       const author = extract('author', null, titleAndAuthor);
-      const page = extract('page', keywords, entry.info,);
-      const position = extract('position', keywords, entry.info,);
-      const date = extract('date', null, entry.info);
-      const type = extract('type', keywords, entry.info);
-      const currentObj = {
-        lang, titleAndAuthor, content, title, author, page, position, date, type
-      };
-      return merge(initialObj, currentObj);
-    }, initialObj);
+      const page = extract('page', keywords, rawClipping.info,);
+      const position = extract('position', keywords, rawClipping.info,);
+      const date = extract('date', null, rawClipping.info);
+      const type = extract('type', keywords, rawClipping.info);
+      const data = {lang, content, title, author, page, position, date, type};
+      return merge(clippings, data);
+    }, {lang: [], library: {}});
   return !inJson ? clippings : JSON.stringify(clippings, null, 2);
 }
 
