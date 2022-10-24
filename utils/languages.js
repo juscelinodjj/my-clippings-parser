@@ -69,13 +69,11 @@ function identify(entry) {
   }) || null;
 }
 
-function main() {
-  return {
-    list,
-    codes,
-    keywords,
-    identify
-  };
+const main = {
+  list,
+  codes,
+  keywords,
+  identify
 }
 
-export default main();
+export default main;
