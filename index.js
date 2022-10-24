@@ -3,8 +3,8 @@
 import test from './utils/test.js';
 import entries from './utils/entries.js';
 import languages from './utils/languages.js';
-import extract from './utils/extract.js'
-import merge from './utils/merge.js'
+import extract from './utils/extract.js';
+import merge from './utils/merge.js';
 
 function main(fileContent, inJson) {
   if (!test(fileContent)) {
