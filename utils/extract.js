@@ -8,7 +8,7 @@ function patterns() {
       return regex(rawRegex);
     },
     author() {
-      const rawRegex = '((?![^\\(]*\\()[^\\)]+)';
+      const rawRegex = '\\(((?![^\\(]*\\()[^\\)]+)\\)';
       return regex(rawRegex);
     },
     type(keywords) {
