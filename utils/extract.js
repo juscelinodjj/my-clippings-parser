@@ -4,7 +4,7 @@ function patterns() {
   const regex = rawRegex => new RegExp(rawRegex, 'i');
   return {
     title() {
-      const rawRegex = '(.+)\\s\\(';
+      const rawRegex = '(.+(?=\\s\\()|.+)';
       return regex(rawRegex);
     },
     author() {
