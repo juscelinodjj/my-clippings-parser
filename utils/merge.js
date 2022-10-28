@@ -11,37 +11,41 @@ function lang(object, data) {
 
 function author(object, data) {
   const {author, title} = data;
-  const reference = object['library'][author ? author : title] ? true : false;
+  const authorOrTitle = author ? author : title;
+  const reference = object['library'][authorOrTitle] ? true : false;
   if (!reference) {
-    object['library'][author ? author : title] = {};
+    object['library'][authorOrTitle] = {};
   }
   return object;
 }
 
 function title(object, data) {
   const {author, title} = data;
-  const reference = object['library'][author][title] ? true : false;
+  const authorOrTitle = author ? author : title;
+  const reference = object['library'][authorOrTitle][title] ? true : false;
   if (!reference) {
-    object['library'][author][title] = {'count': {}, 'entries': []};
+    object['library'][authorOrTitle][title] = {'count': {}, 'entries': []};
   }
   return object;
 }
 
 function type(object, data) {
   const {author, title, type} = data;
-  const reference = object['library'][author][title]['count'][type]
+  const authorOrTitle = author ? author : title;
+  const reference = object['library'][authorOrTitle][title]['count'][type]
     ? true : false;
   if (!reference) {
-    object['library'][author][title]['count'][type] = 0;
+    object['library'][authorOrTitle][title]['count'][type] = 0;
   }
-  object['library'][author][title]['count'][type] += 1;
+  object['library'][authorOrTitle][title]['count'][type] += 1;
   return object;
 }
 
 function entry(object, data) {
   const {author, title, page, position, content, type, date} = data;
   const entry = {type, content, page, position, date};
-  object['library'][author][title]['entries'].push(entry);
+  const authorOrTitle = author ? author : title;
+  object['library'][authorOrTitle][title]['entries'].push(entry);
   return object;
 }
 
