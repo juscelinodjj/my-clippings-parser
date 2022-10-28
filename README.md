@@ -40,6 +40,13 @@ const myClippings = parse(fileContent, true);
             "position": "1-1",
             "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
           },
+          {
+            "type": "[marcador]",
+            "content": "",
+            "page": "1",
+            "position": "1",
+            "date": "Adicionado: segunda-feira, 1 de janeiro de 2022 00:00:00"
+          }
         ]
       }
     }
